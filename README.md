@@ -19,7 +19,7 @@ so, if you started the bots, and set your user id, you can now spam, to spam you
   
 # Other
 
-SVF Discord: discord.gg/TU8F8tYThA
+SVF Discord: https://discord.gg/TU8F8tYThA
 
 if you dont send an message, it will send an embed to the victim that promotes my nuking group SVF.
 
