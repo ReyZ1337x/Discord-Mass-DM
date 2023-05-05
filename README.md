@@ -15,7 +15,7 @@ SB, starts the bots.
 # Discord Commands
 
 so, if you started the bots, and set your user id, you can now spam, to spam you need to do following command: 
-<prefix>dm <the times the bots should dm the victim> <the user id of the victim> <message to send to the user>
+prefix dm <the times the bots should dm the victim> <the user id of the victim> <message to send to the user>
   
 # Other
 
