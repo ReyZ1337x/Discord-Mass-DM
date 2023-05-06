@@ -113,7 +113,7 @@ while True:
 
     if cmd == "Help" or cmd == "help":
         print(Fore.CYAN + r"""
-This is an Discord MassDM Tool Coded by ReyZ, Here are the Commands:
+This is a Discord MassDM Tool Coded by ReyZ, Here are the Commands:
 
 SetID [SI] - sets your user id so you are the only one that can spam.
 CheckTokens [CT] - Checks if the tokens in the Tokens.txt are Real.
