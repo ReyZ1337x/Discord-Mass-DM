@@ -12,9 +12,13 @@ except:
     from colorama import Fore, Back, Style
     from discord.ext import commands
 
-colorama.init(strip=False)
-
 os.system("title MassDm - By ReyZ")
+
+with open('tokens.txt') as tokens:
+    totaltokens = sum(1 for line in tokens)
+
+print(Fore.BLUE + "You Got " + Fore.CYAN + str(totaltokens) + Fore.BLUE + " Bot Tokens.")
+
 print(Fore.CYAN + "type Help to get Info about this Tool.")
 print("")
 InvalidTokens = []
@@ -29,13 +33,17 @@ def dmspam():
     @bot.event
     async def on_ready():
         print("Bot is Working and total Functional! :D")
-        await bot.user.edit(username=nickofbots)
+        if nickofbots is not None:
+            await bot.user.edit(username=nickofbots)
+        else:
+            pass
         await bot.change_presence(status=discord.Status.offline, activity=discord.Activity(type=discord.ActivityType.playing, name="HEIL SVF"))
 
 
     @bot.command()
 
     async def dm(ctx, times=None, user_id=None, *, args=None):
+        aws = 0
         if times != None and user_id != None:
             if args != None:
                 if ctx.author.id == int(userid):
@@ -43,10 +51,11 @@ def dmspam():
                         target = await bot.fetch_user(user_id)
                         await ctx.channel.send("'" + args + "' Is getting send to: " + target.name)
                         for i in range(int(times)):
-                            time.sleep(0.5)
+                            time.sleep(0.2)
                             try:
                                 await target.send(args)
-                                print(Fore.LIGHTCYAN_EX + "[+] " + Fore.CYAN + "Sent Message.")
+                                aws = aws + 1
+                                print(Fore.LIGHTCYAN_EX + "[+] " + Fore.CYAN + "Sent Message. " + "| Messages that were Sent > " + str(aws))
                             except:
                                 print(Fore.YELLOW + "[/] Rate Limit: Handler Waiting 2 seconds.")
                                 time.sleep(2)
@@ -55,9 +64,9 @@ def dmspam():
                         pass
                         print(Fore.LIGHTRED_EX + "[-] " + Fore.RED + "Failed To Send Message.")
             else:
-                fuckembed = discord.Embed(title="𝓕𝓤𝓒𝓚𝓔𝓓 𝓑𝓨 𝓢𝓥𝓕", description="ĦɆƗŁ SVF", colour=discord.Colour.red())
+                fuckembed = discord.Embed(title="​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​𝓕𝓤𝓒𝓚𝓔𝓓 𝓑𝓨 𝓢𝓥𝓕", description="ĦɆƗŁ SVF", colour=discord.Colour.red())
                 fuckembed.set_thumbnail(url="https://cdn.discordapp.com/attachments/1049714006673338379/1103018713990574210/SVFlogo.png")
-                fuckembed.add_field(name="WHAT IS SVF?", value="SVF IS AN DISCORD SERVER/ACCOUNT NUKING GROUP", inline=False)
+                fuckembed.add_field(name="WHAT IS SVF?", value="SVF IS AN DISCORD SERVER/ACCOUNT NUKING GROUP ​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​   ​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​   ​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​   ", inline=False)
                 fuckembed.add_field(name="GG, PRAISE SVF", value="𝕋ℍ𝕀𝕊 𝔸ℂℂ𝕆𝕌ℕ𝕋 𝔾𝕆𝕋 𝔽𝕌ℂ𝕂𝔼𝔻 𝔹𝕐 𝕊𝕍𝔽", inline=False)
                 fuckembed.add_field(name="𝒟𝐼𝒮𝒞𝒪𝑅𝒟", value="https://discord.gg/TU8F8tYThA", inline=False)
                 fuckembed.add_field(name="𝒴𝒪𝒰𝒯𝒰𝐵𝐸", value="https://www.youtube.com/@reyz7422 & https://www.youtube.com/@Dummergoki", inline=False)
@@ -66,10 +75,11 @@ def dmspam():
                         target = await bot.fetch_user(user_id)
                         await ctx.channel.send("The Embed is getting send to: " + target.name)
                         for i in range(int(times)):
-                            time.sleep(0.5)
+                            time.sleep(random.uniform(0.02, 0.3))
                             try:
                                 await target.send(embed=fuckembed)
-                                print(Fore.LIGHTCYAN_EX + "[+] " + Fore.CYAN + "Sent Message.")
+                                aws = aws + 1
+                                print(Fore.LIGHTCYAN_EX + "[+] " + Fore.CYAN + "Sent Message. " + "| Messages that were Sent > " + str(aws))
                             except:
                                 print(Fore.YELLOW + "[/] Rate Limit: Handler Waiting 2 seconds.")
                                 time.sleep(2)
@@ -96,6 +106,7 @@ def cttest():
 
     @bot.event
     async def on_ready():
+        await bot.change_presence(status=discord.Status.offline, activity=discord.Activity(type=discord.ActivityType.playing, name="HEIL SVF"))
         channel = bot.get_channel(int(askForChannelIDCT))
         try:
             await channel.send("Message Sent.")
@@ -113,7 +124,7 @@ while True:
 
     if cmd == "Help" or cmd == "help":
         print(Fore.CYAN + r"""
-This is a Discord MassDM Tool Coded by ReyZ, Here are the Commands:
+This is an Discord MassDM Tool Coded by ReyZ, Here are the Commands:
 
 SetID [SI] - sets your user id so you are the only one that can spam.
 CheckTokens [CT] - Checks if the tokens in the Tokens.txt are Real.
@@ -134,7 +145,7 @@ StartBots [SB] - Starts the bots.
         if askiftokensinserver == "n" or askiftokensinserver == "N":
             pass
         if askiftokensinserver == "y" or askiftokensinserver == "Y":
-            askForChannelIDCT = input(Fore.CYAN + "all bots need to write an test message into a server, ChannelID: " + Fore.MAGENTA)
+            askForChannelIDCT = input(Fore.CYAN + "all bots need to write a test message into a server, ChannelID: " + Fore.MAGENTA)
             print(Fore.CYAN + "Checking all Lines...")
             file1 = open('tokens.txt', 'r')
             Lines = file1.readlines()
@@ -167,6 +178,7 @@ StartBots [SB] - Starts the bots.
                 pass
 
     if cmd == "SB" or cmd == "sb" or cmd == "sB" or cmd == "Sb":
+        runned = 0
         prefix = input(Fore.CYAN + "Prefix: " + Fore.MAGENTA)
         askifchangenick = input(Fore.CYAN + "Change name of all Bots?" + Fore.MAGENTA + " y/n" + Fore.CYAN + " : " + Fore.MAGENTA)
         if askifchangenick == "Y" or askifchangenick == "y":
@@ -180,11 +192,6 @@ StartBots [SB] - Starts the bots.
 
         for line in Lines:
             print(Fore.CYAN)
-            dmspamthreadhandler = dmspamthreadhandler + 1
             dmtoken = line
             dmthread = threading.Thread(target=dmspam)
             dmthread.start()
-            if dmspamthreadhandler == 5:
-                print(Fore.YELLOW + "[/] " + Fore.YELLOW + "Thread Handler waiting 0.5 seconds." + Fore.CYAN)
-                time.sleep(0.5)
-                dmspamthreadhandler = 0
