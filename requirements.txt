@@ -1,0 +1,5 @@
+threading
+colorama
+discord
+discord.py
+requests
