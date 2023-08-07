@@ -1,16 +1,19 @@
 try:
-    import os, time, threading, colorama, discord, random
+    import os, time, threading, colorama, discord, random, requests
     from colorama import Fore, Back, Style
     from discord.ext import commands
 
 except:
     import os, time
-    os.system("pip install threading")
-    os.system("pip install colorama")
-    os.system("pip install discord")
-    import os, time, threading, colorama, discord, random
+    print("Failed To Import The Packages, Installing The Requirements.txt.")
+    time.sleep(2)
+    os.system("pip install -r requirements.txt")
+    import os, time, threading, colorama, discord, random, requests
     from colorama import Fore, Back, Style
     from discord.ext import commands
+    print("Sucessfully Installed And Imported the Packages!")
+    time.sleep(2)
+    os.system("cls")
 
 os.system("title MassDm - By ReyZ")
 
@@ -32,92 +35,92 @@ def dmspam():
 
     @bot.event
     async def on_ready():
-        print("Bot is Working and total Functional! :D")
+    
         if nickofbots is not None:
             await bot.user.edit(username=nickofbots)
-        else:
-            pass
+    
         await bot.change_presence(status=discord.Status.offline, activity=discord.Activity(type=discord.ActivityType.playing, name="HEIL SVF"))
-
-
-    @bot.command()
-
-    async def dm(ctx, times=None, user_id=None, *, args=None):
+    
+        if idofuser is None or times is None:
+            print(Fore.WHITE + "[" + Fore.LIGHTRED_EX + "-" +  Fore.WHITE + "] " + Fore.RED + "A user_id and/or times were not included.")
+            return
+    
         aws = 0
-        if times != None and user_id != None:
-            if args != None:
-                if ctx.author.id == int(userid):
+        try:
+            target = await bot.fetch_user(idofuser)
+        
+            if message is not None:
+            
+                for i in range(int(times)):
+                    time.sleep(random.uniform(0.02, 0.3))
+                
                     try:
-                        target = await bot.fetch_user(user_id)
-                        await ctx.channel.send("'" + args + "' Is getting send to: " + target.name)
-                        for i in range(int(times)):
-                            time.sleep(0.2)
-                            try:
-                                await target.send(args)
-                                aws = aws + 1
-                                print(Fore.LIGHTCYAN_EX + "[+] " + Fore.CYAN + "Sent Message. " + "| Messages that were Sent > " + str(aws))
-                            except:
-                                print(Fore.YELLOW + "[/] Rate Limit: Handler Waiting 2 seconds.")
-                                time.sleep(2)
-
-                    except:
-                        pass
-                        print(Fore.LIGHTRED_EX + "[-] " + Fore.RED + "Failed To Send Message.")
+                        await target.send(message)
+                        aws += 1
+                        print(Fore.WHITE + "[" + Fore.CYAN + "+" +  Fore.WHITE + "] " + Fore.CYAN + f"Sent Message. Messages That Were Sent > {str(aws)}.")
+                    except discord.errors.HTTPException:
+                        print(Fore.WHITE + "[" + Fore.YELLOW + "/" +  Fore.WHITE + "] " + Fore.YELLOW + "Rate Limit: Handler Waiting 2 seconds.")
+                        time.sleep(2)
+        
             else:
-                fuckembed = discord.Embed(title="​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​𝓕𝓤𝓒𝓚𝓔𝓓 𝓑𝓨 𝓢𝓥𝓕", description="ĦɆƗŁ SVF", colour=discord.Colour.red())
+                fuckembed = discord.Embed(title="FUCKED BY SVF", description="ĦɆƗŁ SVF", colour=discord.Colour.red())
                 fuckembed.set_thumbnail(url="https://cdn.discordapp.com/attachments/1049714006673338379/1103018713990574210/SVFlogo.png")
-                fuckembed.add_field(name="WHAT IS SVF?", value="SVF IS AN DISCORD SERVER/ACCOUNT NUKING GROUP ​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​   ​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​   ​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​   ", inline=False)
+                fuckembed.add_field(name="WHAT IS SVF?", value="SVF IS A DISCORD SERVER/ACCOUNT NUKING GROUP​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​   ​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​   ​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​   ", inline=False)
                 fuckembed.add_field(name="GG, PRAISE SVF", value="𝕋ℍ𝕀𝕊 𝔸ℂℂ𝕆𝕌ℕ𝕋 𝔾𝕆𝕋 𝔽𝕌ℂ𝕂𝔼𝔻 𝔹𝕐 𝕊𝕍𝔽", inline=False)
                 fuckembed.add_field(name="𝒟𝐼𝒮𝒞𝒪𝑅𝒟", value="https://discord.gg/TU8F8tYThA", inline=False)
-                fuckembed.add_field(name="𝒴𝒪𝒰𝒯𝒰𝐵𝐸", value="https://www.youtube.com/@reyz7422 & https://www.youtube.com/@Dummergoki", inline=False)
-                if ctx.author.id == int(userid):
+                fuckembed.add_field(name="𝒴𝒪𝒰𝒯𝒰𝐵𝐸", value="https://www.youtube.com/@0reyz & https://www.youtube.com/@Dummergoki", inline=False)
+                fuckembed.set_footer(text="This DM Spammer is a Open Source Project made by ReyZ, github: https://github.com/ReyZ0309/ | Praise SVF")
+                target = await bot.fetch_user(idofuser)
+                
+                for i in range(int(times)):
+                    time.sleep(random.uniform(0.02, 0.3))
+                    
                     try:
-                        target = await bot.fetch_user(user_id)
-                        await ctx.channel.send("The Embed is getting send to: " + target.name)
-                        for i in range(int(times)):
-                            time.sleep(random.uniform(0.02, 0.3))
-                            try:
-                                await target.send(embed=fuckembed)
-                                aws = aws + 1
-                                print(Fore.LIGHTCYAN_EX + "[+] " + Fore.CYAN + "Sent Message. " + "| Messages that were Sent > " + str(aws))
-                            except:
-                                print(Fore.YELLOW + "[/] Rate Limit: Handler Waiting 2 seconds.")
-                                time.sleep(2)
-                    except:
-                        pass
-                        print(Fore.LIGHTRED_EX + "[-] " + Fore.RED + "Failed To Send Message.")
-
-        else:
-            print(Fore.LIGHTRED_EX + "[-] " + Fore.RED + "A user_id and/or times were not included.")
+                        await target.send(embed=fuckembed)
+                        aws += 1
+                        print(Fore.WHITE + "[" + Fore.CYAN + "+" +  Fore.WHITE + "] " + Fore.CYAN + f"Sent Message. Messages That Were Sent > {str(aws)}.")
+                    except discord.errors.HTTPException:
+                        print(Fore.WHITE + "[" + Fore.YELLOW + "/" +  Fore.WHITE + "] " + Fore.YELLOW + "Rate Limit: Handler Waiting 2 seconds.")
+                        time.sleep(2)
+            
+        except discord.errors.NotFound:
+            print(Fore.WHITE + "[" + Fore.MAGENTA + "-" +  Fore.WHITE + "] " + Fore.MAGENTA + "Failed to find the target user.")
     
     @bot.command()
     async def stop(ctx):
         if ctx.author.id == int(userid):
-            print(Fore.LIGHTRED_EX + "[-] " + Fore.RED + "Exited Bot.")
+            print(Fore.WHITE + "[" + Fore.LIGHTRED_EX + "-" +  Fore.WHITE + "] " + Fore.RED + "Exited Bot.")
             exit()
 
     bot.run(dmtoken)
 
-def cttest():
-    import discord
-    from discord.ext import commands
+InvalidTokens = []
 
-    bot = commands.Bot(command_prefix = "!", intents = discord.Intents.all())
+def create_cttest(cttoken):
+    def cttest():
+        import requests
+        from colorama import Fore
+        token = cttoken.strip()
+        header = {"Authorization": f"Bot {token}"}
+        toggle = True
 
-    @bot.event
-    async def on_ready():
-        await bot.change_presence(status=discord.Status.offline, activity=discord.Activity(type=discord.ActivityType.playing, name="HEIL SVF"))
-        channel = bot.get_channel(int(askForChannelIDCT))
-        try:
-            await channel.send("Message Sent.")
-        except:
-            print(Fore.RED + "Failed with token " + cttoken + Fore.CYAN)
-            InvalidTokens.append(cttoken)
-    try:        
-        bot.run(cttoken)
-    except:
-        print(Fore.RED + "Failed with token " + cttoken + Fore.CYAN)
-        InvalidTokens.append(cttoken)
+        while toggle is True:
+            r = requests.get("https://discord.com/api/v9/users/@me", headers=header)
+            
+            if r.status_code == 200:
+                print(Fore.WHITE + "[" + Fore.CYAN + "+" +  Fore.WHITE + "] " + Fore.CYAN + "Valid Token.")
+                toggle = False
+
+            elif r.status_code == 429:
+                print(Fore.WHITE + "[" + Fore.YELLOW + "/" +  Fore.WHITE + "] " + Fore.YELLOW + "Ratelimit.")
+                time.sleep(0.69)
+            
+            else:
+                print(Fore.WHITE + "[" + Fore.MAGENTA + "-" +  Fore.WHITE + "] " + Fore.MAGENTA + "Invalid Token.")
+                InvalidTokens.append(token)
+                toggle = False
+
+    return cttest
 
 while True:
     cmd = input(Fore.GREEN + "$ Input $ : " + Fore.MAGENTA)
@@ -126,9 +129,9 @@ while True:
         print(Fore.CYAN + r"""
 This is an Discord MassDM Tool Coded by ReyZ, Here are the Commands:
 
-SetID [SI] - sets your user id so you are the only one that can spam.
-CheckTokens [CT] - Checks if the tokens in the Tokens.txt are Real.
-StartBots [SB] - Starts the bots.
+SetID [SI]
+CheckTokens [CT]
+MassDM [MD]
         """)
 
     if cmd == "SI" or cmd == "si" or cmd == "sI" or cmd == "Si":
@@ -141,48 +144,54 @@ StartBots [SB] - Starts the bots.
             print(Fore.CYAN + "UserID Set!")
 
     if cmd == "CT" or cmd == "ct" or cmd == "cT" or cmd == "Ct":
-        askiftokensinserver = input(Fore.CYAN + "[REMINDER] Did you get all bots into the server?" + Fore.MAGENTA + " y/n" + Fore.CYAN + " : " + Fore.MAGENTA)
-        if askiftokensinserver == "n" or askiftokensinserver == "N":
-            pass
-        if askiftokensinserver == "y" or askiftokensinserver == "Y":
-            askForChannelIDCT = input(Fore.CYAN + "all bots need to write a test message into a server, ChannelID: " + Fore.MAGENTA)
-            print(Fore.CYAN + "Checking all Lines...")
-            file1 = open('tokens.txt', 'r')
-            Lines = file1.readlines()
-            print(Fore.CYAN + "Checked all Lines.")
-            time.sleep(0.5)
+        file1 = open('tokens.txt', 'r')
+        Lines = file1.readlines()
+        time.sleep(0.5)
 
-            for line in Lines:
-                cttoken = line
-                time.sleep(0.1)
-                ctthread = threading.Thread(target=cttest)
-                ctthread.start()
+        for line in Lines:
+            cttoken = line
+            running = 1
+            time.sleep(0.1)
+            ctthread = threading.Thread(target=create_cttest(cttoken))
+            ctthread.start()
             
-            time.sleep(10)
-            print(Fore.LIGHTRED_EX + "INVALID TOKENS: \n" + Fore.RED)
-            print(*InvalidTokens, sep = "\n")
-            askifcleartokens = input(Fore.CYAN + "Delete Invalid Tokens?" + Fore.MAGENTA + " y/n" + Fore.CYAN + " : " + Fore.MAGENTA)
+        time.sleep(5)
+        print(Fore.LIGHTRED_EX + "INVALID TOKENS: \n" + Fore.RED)
+        print(*InvalidTokens, sep = "\n")
+        print("")
+        print(Fore.CYAN + "if no tokens are shown all your tokens are valid")
+        askifcleartokens = input(Fore.CYAN + "Delete Invalid Tokens?" + Fore.MAGENTA + " y/n" + Fore.CYAN + " : " + Fore.MAGENTA)
 
-            if askifcleartokens == "Y" or askifcleartokens == "y":
+        if askifcleartokens == "Y" or askifcleartokens == "y":
 
-                with open("tokens.txt", "r") as file:
-                    lines = file.readlines()
-                with open("tokens.txt", "w") as file:
-                    for line in lines:
-                        if not any(word in line for word in InvalidTokens):
-                            file.write(line)
+            with open("tokens.txt", "r") as file:
+                lines = file.readlines()
+            with open("tokens.txt", "w") as file:
+                for line in lines:
+                    if not any(word in line for word in InvalidTokens):
+                        file.write(line)
 
-                print(Fore.CYAN + "Finished.")
+            print(Fore.CYAN + "Finished.")
 
-            if askifcleartokens == "N" or askifcleartokens == "n":
-                pass
+        if askifcleartokens == "N" or askifcleartokens == "n":
+            pass
 
-    if cmd == "SB" or cmd == "sb" or cmd == "sB" or cmd == "Sb":
+    if cmd == "MD" or cmd == "md" or cmd == "mD" or cmd == "Md":
         runned = 0
         prefix = input(Fore.CYAN + "Prefix: " + Fore.MAGENTA)
         askifchangenick = input(Fore.CYAN + "Change name of all Bots?" + Fore.MAGENTA + " y/n" + Fore.CYAN + " : " + Fore.MAGENTA)
         if askifchangenick == "Y" or askifchangenick == "y":
             nickofbots = input(Fore.CYAN + "Name: " + Fore.MAGENTA)
+        else:
+            nickofbots = None
+        
+        idofuser = input(Fore.CYAN + "ID of the person you want to DM: " + Fore.MAGENTA)
+        times = input(Fore.CYAN + "How Much DMs to send to the user per bot: " + Fore.MAGENTA)
+        blah = input(Fore.CYAN + "Use Custom Message?" + Fore.MAGENTA + " y/n" + Fore.CYAN + " : " + Fore.MAGENTA + Fore.MAGENTA)
+        if blah == "y":
+            message = input(Fore.CYAN + "Message To Send: " + Fore.MAGENTA)
+        else:
+            message = None
 
         file1 = open('tokens.txt', 'r')
         Lines = file1.readlines()
@@ -195,3 +204,4 @@ StartBots [SB] - Starts the bots.
             dmtoken = line
             dmthread = threading.Thread(target=dmspam)
             dmthread.start()
+    
