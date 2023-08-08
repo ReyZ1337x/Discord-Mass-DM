@@ -196,8 +196,6 @@ MassDM [MD]
         file1 = open('tokens.txt', 'r')
         Lines = file1.readlines()
         
-        with open("user_id.txt", "r") as readuserid:
-            userid = readuserid.readline()
 
         for line in Lines:
             print(Fore.CYAN)
