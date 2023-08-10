@@ -129,19 +129,9 @@ while True:
         print(Fore.CYAN + r"""
 This is an Discord MassDM Tool Coded by ReyZ, Here are the Commands:
 
-SetID [SI]
 CheckTokens [CT]
 MassDM [MD]
         """)
-
-    if cmd == "SI" or cmd == "si" or cmd == "sI" or cmd == "Si":
-        keyword = input(Fore.CYAN + "USERID: " + Fore.MAGENTA)
-        time.sleep(0.5)
-        print(Fore.CYAN + "Setting UserID...")
-        with open("user_id.txt", "w") as keyfile:
-            keyfile.write(keyword)
-            time.sleep(1)
-            print(Fore.CYAN + "UserID Set!")
 
     if cmd == "CT" or cmd == "ct" or cmd == "cT" or cmd == "Ct":
         file1 = open('tokens.txt', 'r')
