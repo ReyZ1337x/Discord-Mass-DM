@@ -5,7 +5,7 @@ A DIscord Mass DM Tool.
 so, first you need to download the tool.
 and you need python3 or higher.
 Then you just run the "DmFucker.py"
-if that doesnt work, open cmd or powershell to that directory and execute this command: pip install -r requirements.txt
+if that doesnt work, open cmd or powershell to that directory and execute this command: pip install requirements.txt -r
 
 # Commands
 
