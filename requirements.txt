@@ -1,4 +1,3 @@
-threading
 colorama
 discord
 discord.py
