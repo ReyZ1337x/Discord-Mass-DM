@@ -7,7 +7,7 @@ except:
     import os, time
     print("Failed To Import The Packages, Installing The Requirements.txt.")
     time.sleep(2)
-    os.system("pip install -r requirements.txt")
+    os.system("pip install requirements.txt -r")
     import os, time, threading, colorama, discord, random, requests
     from colorama import Fore, Back, Style
     from discord.ext import commands
