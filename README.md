@@ -23,6 +23,6 @@ to stop the bots, execute this command: (prefix)stop
 
 # Other
 
-SVF Discord: https://discord.gg/TU8F8tYThA
+SVF Discord: https://discord.gg/CSK83jfBC8
 
 if you dont send an message, it will send an embed to the victim that promotes my nuking group SVF.
