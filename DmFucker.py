@@ -88,9 +88,8 @@ def dmspam():
     
     @bot.command()
     async def stop(ctx):
-        if ctx.author.id == int(userid):
-            print(Fore.WHITE + "[" + Fore.LIGHTRED_EX + "-" +  Fore.WHITE + "] " + Fore.RED + "Exited Bot.")
-            exit()
+        print(Fore.WHITE + "[" + Fore.LIGHTRED_EX + "-" +  Fore.WHITE + "] " + Fore.RED + "Exited Bot.")
+        exit()
 
     bot.run(dmtoken)
 
