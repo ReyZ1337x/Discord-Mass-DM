@@ -12,11 +12,6 @@ if that doesnt work, open cmd or powershell to that directory and execute this c
 CT = checks the tokens.txt if there are any invalid tokens.
 MD = mass dm
 
-# Discord Commands
-
-if you executed the MD command and have all tokens in the server, you can now spam, to spam you need to execute a command for that, the command is:
-(prefix)dm (messages to send per bot) (user id)
-
 
 to stop the bots, execute this command: (prefix)stop
 
